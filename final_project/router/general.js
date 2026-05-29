@@ -132,44 +132,45 @@ public_users.get('/review/:isbn',function (req, res) {
         return res.status(404).json({message: "Book not found"});
     }
   });
-  // TASK 10: Get the list of books available in the shop using async-await with Axios
+ // --- TASKS 10-13: ASYNC/AWAIT & AXIOS ---
+
+// Task 10: Get all books
 const getAllBooksAsync = async () => {
     try {
         const response = await axios.get('http://localhost:5000/');
-        console.log("Task 10 - All Books:");
-        console.log(response.data);
+        return response.data;
     } catch (error) {
-        console.error("Error fetching all books:", error);
+        console.error(error);
     }
 };
 
-// Call the function to test it (optional)
-// getAllBooksAsync();
-// TASK 11: Get book details based on ISBN using async-await with Axios
+// Task 11: Get book by ISBN
 const getBookByISBNAsync = async (isbn) => {
     try {
         const response = await axios.get(`http://localhost:5000/isbn/${isbn}`);
-        console.log(`Task 11 - Book Details for ISBN ${isbn}:`);
-        console.log(response.data);
+        return response.data;
     } catch (error) {
-        console.error("Error fetching book by ISBN:", error);
+        console.error(error);
     }
 };
 
-// Call the function to test it (optional)
-// getBookByISBNAsync(1);
-// TASK 12: Get book details based on Author using async-await with Axios
+// Task 12: Get book by Author
 const getBookByAuthorAsync = async (author) => {
     try {
         const response = await axios.get(`http://localhost:5000/author/${author}`);
-        console.log(`Task 12 - Book Details for Author ${author}:`);
-        console.log(response.data);
+        return response.data;
     } catch (error) {
-        console.error("Error fetching book by author:", error);
+        console.error(error);
     }
 };
 
-// Call the function to test it (optional)
-// getBookByAuthorAsync("Unknown");
-
+// Task 13: Get book by Title
+const getBookByTitleAsync = async (title) => {
+    try {
+        const response = await axios.get(`http://localhost:5000/title/${title}`);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
 module.exports.general = public_users;
